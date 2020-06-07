@@ -9,6 +9,7 @@ public class InstructionTable {
 
     static {
         instructionMap = new HashMap<>();
+        // 读取指令集
         File file = new File("ins.txt");
         try (
             FileReader fileReader = new FileReader(file);

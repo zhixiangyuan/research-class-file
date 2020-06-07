@@ -25,3 +25,5 @@ nbdist/
 
 logs/
 out/
+
+.DS_Store

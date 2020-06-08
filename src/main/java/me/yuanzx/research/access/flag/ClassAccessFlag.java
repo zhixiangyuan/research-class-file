@@ -1,9 +1,11 @@
 package me.yuanzx.research.access.flag;
 
+import java.util.ArrayList;
+
 /**
  * @author ZhiXiang Yuan
  */
-public enum ClassAccessFlag {
+public enum ClassAccessFlag implements AccessFlag {
     /** 标识是否是 public */
     ACC_PUBLIC(0x00000001),
     /** 标识是否是 final */
@@ -29,5 +31,15 @@ public enum ClassAccessFlag {
 
     public int getCode() {
         return code;
+    }
+
+    public static ClassAccessFlag[] decode(int accessFlag) {
+        ArrayList<ClassAccessFlag> list = new ArrayList<>();
+        for (ClassAccessFlag value : values()) {
+            if ((accessFlag & value.getCode()) == value.getCode()) {
+                list.add(value);
+            }
+        }
+        return list.toArray(new ClassAccessFlag[0]);
     }
 }

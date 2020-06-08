@@ -3,7 +3,7 @@ package me.yuanzx.research.model;
 import java.io.IOException;
 
 import me.yuanzx.research.Context;
-import com.alibaba.research.model.constantinfo.*;
+import me.yuanzx.research.model.constantinfo.*;
 
 import me.yuanzx.research.model.constantinfo.ConstantClass;
 import me.yuanzx.research.model.constantinfo.ConstantDouble;

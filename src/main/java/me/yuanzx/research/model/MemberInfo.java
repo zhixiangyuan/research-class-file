@@ -3,6 +3,8 @@ package me.yuanzx.research.model;
 import java.io.IOException;
 
 import me.yuanzx.research.Context;
+import me.yuanzx.research.access.flag.AccessFlag;
+import me.yuanzx.research.access.flag.MethodAccessFlag;
 import me.yuanzx.research.model.attribute.AttributeInfo;
 import me.yuanzx.research.model.constantinfo.ConstantUtf8;
 import me.yuanzx.research.util.U2;
@@ -14,6 +16,7 @@ public class MemberInfo extends BasicInfo {
     private int descriptorIndex;
     private int attributesCount;
     private AttributeInfo[] attributes;
+    private AccessFlag[] accessFlagEnums;
 
     private String memberName;
     private String descriptor;
@@ -81,6 +84,11 @@ public class MemberInfo extends BasicInfo {
 
     public MemberInfo setAttributes(AttributeInfo[] attributes) {
         this.attributes = attributes;
+        return this;
+    }
+
+    public MemberInfo setMethodAccessFlags(AccessFlag[] accessFlagEnums) {
+        this.accessFlagEnums = accessFlagEnums;
         return this;
     }
 }

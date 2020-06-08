@@ -1,5 +1,8 @@
 package me.yuanzx.research.model;
 
+import me.yuanzx.research.access.flag.AccessFlag;
+import me.yuanzx.research.access.flag.ClassAccessFlag;
+
 /**
  * @author ZhiXiang Yuan
  */
@@ -18,6 +21,7 @@ public class Clazz {
     private MemberInfo[] fields;
     private int methodCount;
     private MemberInfo[] methods;
+    private AccessFlag[] accessFlags;
 
     public String getMagicNumber() {
         return magicNumber;
@@ -61,6 +65,7 @@ public class Clazz {
 
     public Clazz setAccessFlag(int accessFlag) {
         this.accessFlag = accessFlag;
+        this.accessFlags = ClassAccessFlag.decode(accessFlag);
         return this;
     }
 

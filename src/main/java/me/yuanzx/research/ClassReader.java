@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import me.yuanzx.research.access.flag.FieldAccessFlag;
+import me.yuanzx.research.access.flag.MethodAccessFlag;
 import me.yuanzx.research.log.Log;
 import me.yuanzx.research.model.Clazz;
 import me.yuanzx.research.model.ConstantPool;
@@ -80,6 +82,7 @@ public class ClassReader {
             MemberInfo methodInfo = new MemberInfo(constantPool);
             memberInfos[i] = methodInfo;
             methodInfo.decode(context);
+            methodInfo.setMethodAccessFlags(MethodAccessFlag.decode(methodInfo.getAccessFlags()));
             for (int j = 0; j < methodInfo.getAttributesCount(); j++) {
                 if (methodInfo.getAttributes()[j] instanceof CodeAttribute) {
                     CodeAttribute codeAttribute = (CodeAttribute) methodInfo.getAttributes()[j];
@@ -110,6 +113,7 @@ public class ClassReader {
         for (int i = 0; i < fieldCount; i++) {
             MemberInfo methodInfo = new MemberInfo(constantPool);
             methodInfo.decode(context);
+            methodInfo.setMethodAccessFlags(FieldAccessFlag.decode(methodInfo.getAccessFlags()));
             memberInfos[i] = methodInfo;
         }
     }

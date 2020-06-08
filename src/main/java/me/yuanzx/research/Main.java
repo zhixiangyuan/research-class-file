@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Clazz clazz = ClassReader.read(
-            "/Users/yuanzhixiang/workspace/project/tmp/research-class-file/target/classes/com/alibaba/research/ClassReader.class");
+            "/Users/yuanzhixiang/workspace/project/tmp/research-class-file/target/test-classes/me/yuanzx/research/Test.class");
         System.out.println(clazz);
     }
 }

@@ -1,10 +1,12 @@
 package me.yuanzx.research.access.flag;
 
+import java.util.ArrayList;
+
 /**
  * @author ZhiXiang Yuan
  */
-public enum  FieldAccessFlag {
-    /**	声明为 public */
+public enum FieldAccessFlag implements AccessFlag {
+    /** 声明为 public */
     ACC_PUBLIC(0x0001),
     /** 声明为 private */
     ACC_PRIVATE(0x0002),
@@ -32,5 +34,15 @@ public enum  FieldAccessFlag {
 
     public int getCode() {
         return code;
+    }
+
+    public static FieldAccessFlag[] decode(int accessFlag) {
+        ArrayList<FieldAccessFlag> list = new ArrayList<>();
+        for (FieldAccessFlag value : values()) {
+            if ((accessFlag & value.getCode()) == value.getCode()) {
+                list.add(value);
+            }
+        }
+        return list.toArray(new FieldAccessFlag[0]);
     }
 }

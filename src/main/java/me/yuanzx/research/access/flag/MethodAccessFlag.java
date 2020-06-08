@@ -1,10 +1,12 @@
 package me.yuanzx.research.access.flag;
 
+import java.util.ArrayList;
+
 /**
  * @author ZhiXiang Yuan
  */
-public enum  MethodAccessFlag {
-    /**	声明为 public */
+public enum MethodAccessFlag implements AccessFlag {
+    /** 声明为 public */
     ACC_PUBLIC(0x0001),
     /** 声明为 private */
     ACC_PRIVATE(0x0002),
@@ -27,8 +29,7 @@ public enum  MethodAccessFlag {
     /** 声明为 strictfp，表示使用 IEEE-754 规范的精确浮点数，极少使用 */
     ACC_STRICT(0x0800),
     /** 表示这个方法是由编译器自动生成，而不是用户代码编译产生 */
-    ACC_SYNTHETIC(0x1000)
-    ;
+    ACC_SYNTHETIC(0x1000);
 
     private int code;
 
@@ -39,4 +40,15 @@ public enum  MethodAccessFlag {
     public int getCode() {
         return code;
     }
+
+    public static MethodAccessFlag[] decode(int accessFlag) {
+        ArrayList<MethodAccessFlag> list = new ArrayList<>();
+        for (MethodAccessFlag value : values()) {
+            if ((accessFlag & value.getCode()) == value.getCode()) {
+                list.add(value);
+            }
+        }
+        return list.toArray(new MethodAccessFlag[0]);
+    }
+
 }
